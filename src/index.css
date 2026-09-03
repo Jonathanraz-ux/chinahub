@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+@theme {
+  --color-chm-red: #B91C1C;
+  --color-chm-red-dark: #991B1B;
+  --color-chm-red-light: #DC2626;
+  --color-chm-gold: #D4A843;
+  --color-chm-gold-light: #E8C968;
+  --color-chm-charcoal: #1C1C1E;
+  --color-chm-gray: #F5F3F0;
+  --color-chm-gray-dark: #E8E5E0;
+  --color-chm-cream: #FAF9F7;
+  --color-chm-border: #E5E2DD;
+  --color-chm-text: #2D2D2D;
+  --color-chm-text-light: #6B6B6B;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-chm-text);
+    background-color: #ffffff;
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--color-chm-red);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.5s ease-out forwards;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.5s ease-out forwards;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #999; }
+
+/* Toast notification */
+.toast-enter { animation: slideInRight 0.3s ease-out; }
+.toast-exit { animation: fadeIn 0.3s ease-in reverse; }
