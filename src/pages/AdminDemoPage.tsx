@@ -30,6 +30,19 @@ import {
   Mail,
   Phone,
   Upload,
+  DollarSign,
+  TrendingDown,
+  Receipt,
+  FileSpreadsheet,
+  UserCog,
+  ClipboardList,
+  Shield,
+  BarChart3,
+  Wallet,
+  CreditCard,
+  ArrowUpRight,
+  ArrowDownRight,
+  Download,
 } from 'lucide-react';
 import {
   BarChart,
@@ -53,6 +66,8 @@ const NAV_ITEMS = [
   { id: 'clients', label: 'Clients', icon: Users },
   { id: 'messages', label: 'Messages', icon: MessageSquare },
   { id: 'testimonials', label: 'Témoignages', icon: Star },
+  { id: 'finances', label: 'Finances', icon: DollarSign },
+  { id: 'gestion', label: 'Gestion', icon: UserCog },
   { id: 'content', label: 'Contenu du site', icon: Globe },
   { id: 'settings', label: 'Paramètres', icon: Settings },
 ] as const;
@@ -77,6 +92,50 @@ const ACTIVITY_ITEMS = [
   { text: 'Message reçu de Hery Razakandrato', time: 'Hier', color: 'bg-yellow-500' },
   { text: 'Nouveau produit ajouté : Mini-Ligne Alimentaire', time: 'Il y a 3j', color: 'bg-chm-red' },
   { text: 'Témoignage publié par Nomena R.', time: 'Il y a 4j', color: 'bg-chm-gold' },
+];
+
+const FINANCE_ENTRIES = [
+  { id: 'REC-001', type: 'income' as const, label: 'Vente — Mini-Ligne Alimentaire', amount: 4500000, date: '2026-09-01', method: 'Virement', status: 'Reçu' },
+  { id: 'REC-002', type: 'income' as const, label: 'Vente — Incubateur Semi-Automatique', amount: 2800000, date: '2026-08-28', method: 'Mobile Money', status: 'Reçu' },
+  { id: 'REC-003', type: 'income' as const, label: 'Vente — Machine à Emballer', amount: 1200000, date: '2026-08-25', method: 'Espèces', status: 'En attente' },
+  { id: 'REC-004', type: 'expense' as const, label: 'Fret maritime — Conteneur 20\'', amount: 3200000, date: '2026-08-30', method: 'Virement', status: 'Payé' },
+  { id: 'REC-005', type: 'expense' as const, label: 'Douane & dédouanement', amount: 1850000, date: '2026-08-30', method: 'Virement', status: 'Payé' },
+  { id: 'REC-006', type: 'expense' as const, label: 'Location entrepot — Août', amount: 500000, date: '2026-08-01', method: 'Virement', status: 'Payé' },
+  { id: 'REC-007', type: 'expense' as const, label: 'Salaires — Août', amount: 2400000, date: '2026-08-31', method: 'Virement', status: 'Payé' },
+  { id: 'REC-008', type: 'income' as const, label: 'Vente — Scelleuse Sous-Vide', amount: 870000, date: '2026-08-20', method: 'Mobile Money', status: 'Reçu' },
+];
+
+const INVOICES = [
+  { id: 'FAC-2026-001', client: 'Rakoto Jean', amount: 4500000, date: '2026-09-01', dueDate: '2026-09-15', status: 'Payée' },
+  { id: 'FAC-2026-002', client: 'Rasoa Marie', amount: 2800000, date: '2026-08-28', dueDate: '2026-09-12', status: 'Payée' },
+  { id: 'FAC-2026-003', client: 'Andry R.', amount: 1200000, date: '2026-08-25', dueDate: '2026-09-08', status: 'En attente' },
+  { id: 'FAC-2026-004', client: 'Hery Razakandrato', amount: 870000, date: '2026-08-20', dueDate: '2026-09-03', status: 'En retard' },
+  { id: 'FAC-2026-005', client: 'Nomena R.', amount: 3100000, date: '2026-08-15', dueDate: '2026-08-30', status: 'Payée' },
+];
+
+const MONTHLY_REVENUE = [
+  { month: 'Avr', revenus: 6200000, depenses: 5100000 },
+  { month: 'Mai', revenus: 8400000, depenses: 6300000 },
+  { month: 'Juin', revenus: 7100000, depenses: 5800000 },
+  { month: 'Juil', revenus: 9500000, depenses: 7200000 },
+  { month: 'Août', revenus: 9370000, depenses: 7950000 },
+  { month: 'Sep', revenus: 4500000, depenses: 1200000 },
+];
+
+const TEAM_MEMBERS = [
+  { id: 'TM-001', name: 'Rija Andrianarivelo', role: 'Administrateur', email: 'rija@chinahub.mg', status: 'Actif', lastLogin: '2026-09-03 08:15' },
+  { id: 'TM-002', name: 'Hanta Razafindrabe', role: 'Commercial', email: 'hanta@chinahub.mg', status: 'Actif', lastLogin: '2026-09-03 09:30' },
+  { id: 'TM-003', name: 'Fifaliana Ranaivoson', role: 'Logistique', email: 'fifaliana@chinahub.mg', status: 'Actif', lastLogin: '2026-09-02 16:45' },
+  { id: 'TM-004', name: 'Tojo Rakotomalala', role: 'Comptable', email: 'tojo@chinahub.mg', status: 'Inactif', lastLogin: '2026-08-28 11:00' },
+];
+
+const AUDIT_LOG = [
+  { id: 'LOG-001', user: 'Rija A.', action: 'Connexion au système', date: '2026-09-03 08:15', ip: '192.168.1.10' },
+  { id: 'LOG-002', user: 'Hanta R.', action: 'Devis envoyé à Rasoa Marie', date: '2026-09-03 09:32', ip: '192.168.1.22' },
+  { id: 'LOG-003', user: 'Rija A.', action: 'Produit ajouté : Mini-Ligne Alimentaire V2', date: '2026-09-02 14:20', ip: '192.168.1.10' },
+  { id: 'LOG-004', user: 'Fifaliana R.', action: 'Commande CONF-2026-012 marquée comme livrée', date: '2026-09-02 11:05', ip: '192.168.1.35' },
+  { id: 'LOG-005', user: 'Tojo R.', action: 'Facture FAC-2026-005 créée', date: '2026-08-28 10:00', ip: '192.168.1.18' },
+  { id: 'LOG-006', user: 'Rija A.', action: 'Paramètres du site modifiés', date: '2026-08-27 15:40', ip: '192.168.1.10' },
 ];
 
 const PLACEHOLDER_SECTIONS: Record<string, { icon: React.ReactNode; title: string; description: string }> = {
@@ -460,6 +519,8 @@ function AdminDashboardInner() {
               {activeSection === 'testimonials' && 'Gestion des témoignages'}
               {activeSection === 'content' && 'Édition du contenu'}
               {activeSection === 'settings' && 'Paramètres système'}
+              {activeSection === 'finances' && 'Suivi financier — revenus, dépenses, factures'}
+              {activeSection === 'gestion' && 'Équipe, rapports et journal d\'audit'}
             </p>
           </div>
 
@@ -872,6 +933,289 @@ function AdminDashboardInner() {
                 </div>
               </div>
               <p className="text-xs text-chm-text-light">{demoMessages.length} message(s) — {unreadCount} non lu(s)</p>
+            </div>
+          )}
+
+          {/* ========== FINANCES ========== */}
+          {activeSection === 'finances' && (
+            <div className="space-y-6">
+              {/* KPI cards */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+                <div className="bg-white rounded-xl shadow-sm p-5">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="w-10 h-10 rounded-xl bg-green-50 flex items-center justify-center">
+                      <ArrowUpRight size={18} className="text-green-600" />
+                    </div>
+                    <span className="text-xs font-medium text-green-600 bg-green-50 px-2 py-0.5 rounded-full">+12%</span>
+                  </div>
+                  <p className="text-2xl font-bold text-chm-charcoal">14 570 000</p>
+                  <p className="text-sm text-chm-text-light">Revenus (Ar)</p>
+                </div>
+                <div className="bg-white rounded-xl shadow-sm p-5">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center">
+                      <ArrowDownRight size={18} className="text-red-500" />
+                    </div>
+                    <span className="text-xs font-medium text-red-500 bg-red-50 px-2 py-0.5 rounded-full">+8%</span>
+                  </div>
+                  <p className="text-2xl font-bold text-chm-charcoal">11 150 000</p>
+                  <p className="text-sm text-chm-text-light">Dépenses (Ar)</p>
+                </div>
+                <div className="bg-white rounded-xl shadow-sm p-5">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
+                      <Wallet size={18} className="text-blue-600" />
+                    </div>
+                  </div>
+                  <p className="text-2xl font-bold text-chm-charcoal">3 420 000</p>
+                  <p className="text-sm text-chm-text-light">Bénéfice net (Ar)</p>
+                </div>
+                <div className="bg-white rounded-xl shadow-sm p-5">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="w-10 h-10 rounded-xl bg-yellow-50 flex items-center justify-center">
+                      <CreditCard size={18} className="text-yellow-600" />
+                    </div>
+                    <span className="text-xs font-medium text-yellow-600 bg-yellow-50 px-2 py-0.5 rounded-full">2</span>
+                  </div>
+                  <p className="text-2xl font-bold text-chm-charcoal">2 070 000</p>
+                  <p className="text-sm text-chm-text-light">En attente (Ar)</p>
+                </div>
+              </div>
+
+              {/* Revenue chart */}
+              <div className="bg-white rounded-xl shadow-sm p-6">
+                <h3 className="text-base font-bold text-chm-charcoal mb-4">Revenus vs Dépenses — 6 derniers mois</h3>
+                <div className="h-72">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart data={MONTHLY_REVENUE} barCategoryGap="20%">
+                      <CartesianGrid strokeDasharray="3 3" stroke="#E5E2DD" />
+                      <XAxis dataKey="month" tick={{ fontSize: 12, fill: '#6B6B6B' }} />
+                      <YAxis tick={{ fontSize: 12, fill: '#6B6B6B' }} tickFormatter={(v: number) => `${(v / 1000000).toFixed(0)}M`} />
+                      <Tooltip
+                        formatter={(value) => `${Number(value).toLocaleString('fr-MG')} Ar`}
+                        contentStyle={{ backgroundColor: '#fff', border: '1px solid #E5E2DD', borderRadius: '8px', fontSize: '13px' }}
+                      />
+                      <Bar dataKey="revenus" name="Revenus" fill="#16A34A" radius={[4, 4, 0, 0]} />
+                      <Bar dataKey="depenses" name="Dépenses" fill="#DC2626" radius={[4, 4, 0, 0]} />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+                {/* Mouvements financiers */}
+                <div className="bg-white rounded-xl shadow-sm p-6">
+                  <h3 className="text-base font-bold text-chm-charcoal mb-4">Mouvements récents</h3>
+                  <div className="space-y-3">
+                    {FINANCE_ENTRIES.map(entry => (
+                      <div key={entry.id} className="flex items-center gap-3 p-3 rounded-lg hover:bg-chm-gray/50 transition-colors">
+                        <div className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 ${entry.type === 'income' ? 'bg-green-50' : 'bg-red-50'}`}>
+                          {entry.type === 'income'
+                            ? <ArrowUpRight size={16} className="text-green-600" />
+                            : <ArrowDownRight size={16} className="text-red-500" />}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm font-medium text-chm-charcoal truncate">{entry.label}</p>
+                          <p className="text-xs text-chm-text-light">{entry.date} — {entry.method}</p>
+                        </div>
+                        <div className="text-right shrink-0">
+                          <p className={`text-sm font-bold ${entry.type === 'income' ? 'text-green-600' : 'text-red-500'}`}>
+                            {entry.type === 'income' ? '+' : '-'}{entry.amount.toLocaleString('fr-MG')} Ar
+                          </p>
+                          <span className={`text-[10px] font-medium ${entry.status === 'Reçu' || entry.status === 'Payé' ? 'text-green-600' : 'text-yellow-600'}`}>
+                            {entry.status}
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Factures */}
+                <div className="bg-white rounded-xl shadow-sm p-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-base font-bold text-chm-charcoal">Factures</h3>
+                    <button className="flex items-center gap-1.5 rounded-lg bg-chm-red px-3 py-1.5 text-xs font-medium text-white hover:bg-chm-red-dark transition-colors">
+                      <Plus size={13} />
+                      Nouvelle facture
+                    </button>
+                  </div>
+                  <div className="overflow-x-auto -mx-6 px-6">
+                    <table className="w-full text-sm">
+                      <thead>
+                        <tr className="border-b border-chm-border">
+                          <th className="text-left py-2 font-medium text-chm-text-light whitespace-nowrap">Réf.</th>
+                          <th className="text-left py-2 font-medium text-chm-text-light whitespace-nowrap">Client</th>
+                          <th className="text-left py-2 font-medium text-chm-text-light whitespace-nowrap">Montant</th>
+                          <th className="text-left py-2 font-medium text-chm-text-light whitespace-nowrap">Échéance</th>
+                          <th className="text-left py-2 font-medium text-chm-text-light whitespace-nowrap">Statut</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {INVOICES.map(inv => (
+                          <tr key={inv.id} className="border-b border-chm-border last:border-0 hover:bg-chm-gray/30 transition-colors">
+                            <td className="py-2.5 font-medium text-chm-charcoal whitespace-nowrap">{inv.id}</td>
+                            <td className="py-2.5 text-chm-text whitespace-nowrap">{inv.client}</td>
+                            <td className="py-2.5 text-chm-charcoal font-medium whitespace-nowrap">{inv.amount.toLocaleString('fr-MG')} Ar</td>
+                            <td className="py-2.5 text-chm-text-light whitespace-nowrap">{inv.dueDate}</td>
+                            <td className="py-2.5">
+                              <span className={`inline-block rounded-full px-2.5 py-0.5 text-[11px] font-medium ${
+                                inv.status === 'Payée' ? 'bg-green-100 text-green-800' :
+                                inv.status === 'En attente' ? 'bg-yellow-100 text-yellow-800' :
+                                'bg-red-100 text-red-800'
+                              }`}>
+                                {inv.status}
+                              </span>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                  <div className="mt-4 flex items-center gap-2">
+                    <button className="flex items-center gap-1.5 rounded-lg border border-chm-border px-3 py-1.5 text-xs font-medium text-chm-text hover:bg-chm-gray transition-colors">
+                      <Download size={13} />
+                      Exporter CSV
+                    </button>
+                    <button className="flex items-center gap-1.5 rounded-lg border border-chm-border px-3 py-1.5 text-xs font-medium text-chm-text hover:bg-chm-gray transition-colors">
+                      <FileSpreadsheet size={13} />
+                      Rapport mensuel
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* ========== GESTION ========== */}
+          {activeSection === 'gestion' && (
+            <div className="space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="bg-white rounded-xl shadow-sm p-5 flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center shrink-0">
+                    <UserCog size={22} className="text-blue-600" />
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-chm-charcoal">{TEAM_MEMBERS.length}</p>
+                    <p className="text-sm text-chm-text-light">Membres de l'équipe</p>
+                  </div>
+                </div>
+                <div className="bg-white rounded-xl shadow-sm p-5 flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-green-50 flex items-center justify-center shrink-0">
+                    <ClipboardList size={22} className="text-green-600" />
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-chm-charcoal">12</p>
+                    <p className="text-sm text-chm-text-light">Rapports générés</p>
+                  </div>
+                </div>
+                <div className="bg-white rounded-xl shadow-sm p-5 flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center shrink-0">
+                    <Shield size={22} className="text-purple-600" />
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-chm-charcoal">{AUDIT_LOG.length}</p>
+                    <p className="text-sm text-chm-text-light">Événements audit</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+                {/* Équipe */}
+                <div className="bg-white rounded-xl shadow-sm p-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-base font-bold text-chm-charcoal">Équipe</h3>
+                    <button className="flex items-center gap-1.5 rounded-lg bg-chm-red px-3 py-1.5 text-xs font-medium text-white hover:bg-chm-red-dark transition-colors">
+                      <Plus size={13} />
+                      Ajouter
+                    </button>
+                  </div>
+                  <div className="space-y-3">
+                    {TEAM_MEMBERS.map(m => (
+                      <div key={m.id} className="flex items-center gap-3 p-3 rounded-lg hover:bg-chm-gray/50 transition-colors">
+                        <div className="w-10 h-10 rounded-full bg-chm-charcoal flex items-center justify-center shrink-0">
+                          <span className="text-white font-bold text-sm">{m.name.split(' ').map(n => n[0]).join('')}</span>
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm font-medium text-chm-charcoal">{m.name}</p>
+                          <p className="text-xs text-chm-text-light">{m.role} — {m.email}</p>
+                        </div>
+                        <div className="text-right shrink-0">
+                          <span className={`inline-block rounded-full px-2 py-0.5 text-[10px] font-medium ${m.status === 'Actif' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-600'}`}>
+                            {m.status}
+                          </span>
+                          <p className="text-[10px] text-chm-text-light mt-1">Dernière connexion: {m.lastLogin}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Rapports rapides */}
+                <div className="bg-white rounded-xl shadow-sm p-6">
+                  <h3 className="text-base font-bold text-chm-charcoal mb-4">Rapports disponibles</h3>
+                  <div className="space-y-3">
+                    {[
+                      { icon: <BarChart3 size={18} className="text-blue-600" />, title: 'Chiffre d\'affaires mensuel', desc: 'Vue détaillée des revenus par mois', action: 'Générer' },
+                      { icon: <Receipt size={18} className="text-green-600" />, title: 'Factures en attente', desc: 'Liste des factures impayées et en retard', action: 'Consulter' },
+                      { icon: <TrendingDown size={18} className="text-red-500" />, title: 'Rapport de dépenses', desc: 'Détail des sorties par catégorie', action: 'Générer' },
+                      { icon: <FileSpreadsheet size={18} className="text-purple-600" />, title: 'Bilan trimestriel', desc: 'Synthèse financière du trimestre', action: 'Générer' },
+                      { icon: <Users size={18} className="text-chm-gold" />, title: 'Performance équipe', desc: 'Activité et contributions par membre', action: 'Consulter' },
+                    ].map((r, i) => (
+                      <div key={i} className="flex items-center gap-3 p-3 rounded-lg hover:bg-chm-gray/50 transition-colors">
+                        <div className="w-9 h-9 rounded-lg bg-chm-gray flex items-center justify-center shrink-0">
+                          {r.icon}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm font-medium text-chm-charcoal">{r.title}</p>
+                          <p className="text-xs text-chm-text-light">{r.desc}</p>
+                        </div>
+                        <button
+                          onClick={() => showToast(`Rapport "${r.title}" en cours de génération — démo`, 'info')}
+                          className="shrink-0 rounded-lg border border-chm-border px-3 py-1.5 text-xs font-medium text-chm-text hover:bg-chm-gray transition-colors"
+                        >
+                          {r.action}
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Journal d'audit */}
+              <div className="bg-white rounded-xl shadow-sm p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-base font-bold text-chm-charcoal">Journal d'audit</h3>
+                  <button className="flex items-center gap-1.5 rounded-lg border border-chm-border px-3 py-1.5 text-xs font-medium text-chm-text hover:bg-chm-gray transition-colors">
+                    <Download size={13} />
+                    Exporter
+                  </button>
+                </div>
+                <div className="overflow-x-auto -mx-6 px-6">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b border-chm-border">
+                        <th className="text-left py-2 font-medium text-chm-text-light whitespace-nowrap">ID</th>
+                        <th className="text-left py-2 font-medium text-chm-text-light whitespace-nowrap">Utilisateur</th>
+                        <th className="text-left py-2 font-medium text-chm-text-light whitespace-nowrap">Action</th>
+                        <th className="text-left py-2 font-medium text-chm-text-light whitespace-nowrap">Date</th>
+                        <th className="text-left py-2 font-medium text-chm-text-light whitespace-nowrap">Adresse IP</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {AUDIT_LOG.map(log => (
+                        <tr key={log.id} className="border-b border-chm-border last:border-0 hover:bg-chm-gray/30 transition-colors">
+                          <td className="py-2.5 font-medium text-chm-charcoal whitespace-nowrap">{log.id}</td>
+                          <td className="py-2.5 text-chm-text whitespace-nowrap">{log.user}</td>
+                          <td className="py-2.5 text-chm-text max-w-[280px] truncate" title={log.action}>{log.action}</td>
+                          <td className="py-2.5 text-chm-text-light whitespace-nowrap">{log.date}</td>
+                          <td className="py-2.5 text-chm-text-light font-mono whitespace-nowrap">{log.ip}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
           )}
 
