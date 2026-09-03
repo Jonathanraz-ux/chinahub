@@ -28,7 +28,7 @@ export const categories: Category[] = [
     description: 'Solutions d\'emballage professionnelles',
     icon: 'Package',
     productCount: 2,
-    image: `${IMG_BASE}/photo-1558618666-fcd25c85f82e?w=600&h=400&fit=crop`,
+    image: `${IMG_BASE}/photo-1615485290382-441e4d049cb5?w=600&h=400&fit=crop`,
   },
   {
     id: '4',
@@ -162,7 +162,7 @@ export const products: Product[] = [
     priceType: 'quote',
     images: [
       `${IMG_BASE}/photo-1625246333195-78d9c38ad449?w=800&h=600&fit=crop`,
-      `${IMG_BASE}/photo-1559827260-dc66d52bef1d?w=800&h=600&fit=crop`,
+      `${IMG_BASE}/photo-1581091226825-a6a2a5aee158?w=800&h=600&fit=crop`,
     ],
     badges: ['Populaire'],
     specs: [
@@ -223,7 +223,7 @@ export const products: Product[] = [
     price: 'Sur devis',
     priceType: 'quote',
     images: [
-      `${IMG_BASE}/photo-1558618666-fcd25c85f82e?w=800&h=600&fit=crop`,
+      `${IMG_BASE}/photo-1589909202802-8f4aadce1849?w=800&h=600&fit=crop`,
       `${IMG_BASE}/photo-1537462715879-360eeb61a0ad?w=800&h=600&fit=crop`,
     ],
     badges: ['Sur commande'],
@@ -285,7 +285,7 @@ export const products: Product[] = [
     price: 'Sur devis',
     priceType: 'quote',
     images: [
-      `${IMG_BASE}/photo-1558618666-fcd25c85f82e?w=800&h=600&fit=crop`,
+      `${IMG_BASE}/photo-1615397349754-cfa2066a298e?w=800&h=600&fit=crop`,
     ],
     badges: [],
     specs: [
